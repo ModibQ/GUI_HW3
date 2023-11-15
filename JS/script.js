@@ -8,6 +8,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     
+    //Generate the Table
     function generateTable() {
         const startHorizontal = parseInt(document.getElementById('startHorizontal').value);
         const endHorizontal = parseInt(document.getElementById('endHorizontal').value);
@@ -16,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         clearResults();
 
-        // Validate input values range
         if (
             isNaN(startHorizontal) || isNaN(endHorizontal) ||
             isNaN(startVertical) || isNaN(endVertical) ||
@@ -44,12 +44,14 @@ document.addEventListener('DOMContentLoaded', function () {
         table.innerHTML = tableHTML;
     }
 
+    // Function to display an error message to the user
     function displayError(message) {
         const output = document.getElementById('output');
         output.innerHTML = `<p>${message}</p>`;
         output.style.display = 'block'; 
     }
 
+    // Function to clear previous results and errors
     function clearResults() {
         const output = document.getElementById('output');
         const table = document.getElementById('multiplicationTable');
@@ -63,12 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function buildTableHTML(startHorizontal, endHorizontal, startVertical, endVertical) {
         let tableHTML = '<table>';
 
+        // Create the header row with horizontal values
         tableHTML += '<tr><th></th>';
         for (let i = startHorizontal; i <= endHorizontal; i++) {
             tableHTML += `<th>${i}</th>`;
         }
         tableHTML += '</tr>';
 
+        // Populate the table with multiplication values
         for (let i = startVertical; i <= endVertical; i++) {
             tableHTML += '<tr>';
             tableHTML += `<th>${i}</th>`;
